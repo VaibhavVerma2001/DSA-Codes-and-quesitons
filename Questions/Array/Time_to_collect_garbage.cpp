@@ -2,6 +2,9 @@
 // Solution - https://leetcode.com/problems/minimum-amount-of-time-to-collect-garbage/solutions/4326214/simple-easy-solution-with-comments/
 
 
+#include<bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
     // Logic - 

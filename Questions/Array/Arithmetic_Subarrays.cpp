@@ -7,7 +7,7 @@
 // **************************  CODE **************************
 
 #include<bits/stdc++.h>
-using namespace std;;
+using namespace std;
 
 // Method 1 - TC = O(m * nlog(n)) , where m is number of queries
 // SC = O(n)

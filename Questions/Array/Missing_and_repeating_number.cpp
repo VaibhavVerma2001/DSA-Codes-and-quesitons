@@ -6,8 +6,8 @@
 // Method 2 - TC = O(N), SC = O(1)
 // visited node - multiply with -1
 
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+using namespace std;
 
 pair<int,int> missingAndRepeating(vector<int> &arr, int n)
 {
