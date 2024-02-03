@@ -32,8 +32,8 @@ void lastOccurance2(string &str, char ch, int n, int i, int &ans){
     }
 
     // PROC.
-    if(str[n-1] == ch){
-        ans = n-1;
+    if(str[i] == ch){
+        ans = i;
         return ; // break loop after 1st occurance
     }
 
@@ -52,7 +52,6 @@ void reverseString(string &str, int s , int e){ // pass str by reference
     if(s >= e){
         return ;
     }
-
     // Proc.
     swap(str[s],str[e]);
 
