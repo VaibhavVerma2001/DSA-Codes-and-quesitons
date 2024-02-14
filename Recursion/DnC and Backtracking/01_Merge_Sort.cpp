@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 using namespace std ;
 
 // step 1 - Divide array in 2 parts
@@ -8,77 +9,46 @@ using namespace std ;
 
 
 // Mergge 2 sorted array
-void mergeTwoSortedArray(int *arr,int s, int e){
+void mergeTwoSortedArray(vector<int> &arr,int s, int e){
     int mid = (s+e)/2;
     //Create left and right array
 
     // USING ARRAY IN HEAP
-    int leftSize = mid - s + 1;
-    int rightSize = e - mid;
+    // int leftSize = mid - s + 1;
+    // int rightSize = e - mid;
 
-    int *left = new int[leftSize];
-    int *right = new int[rightSize];
-
-
-    // Copy values in left array
-    int k = s;
-    for(int i = 0 ; i < leftSize; i++){
-        left[i] = arr[k];
-        k++;
-    }
+    // int *left = new int[leftSize];
+    // int *right = new int[rightSize];
 
 
-    // copy values in right array
-    k = mid + 1;
-    for(int i = 0 ; i < rightSize; i++){
-        right[i] = arr[k];
-        k++;
-    }
+    // // Copy values in left array
+    // int k = s;
+    // for(int i = 0 ; i < leftSize; i++){
+    //     left[i] = arr[k];
+    //     k++;
+    // }
+
+
+    // // copy values in right array
+    // k = mid + 1;
+    // for(int i = 0 ; i < rightSize; i++){
+    //     right[i] = arr[k];
+    //     k++;
+    // }
 
 
     // USING VECTOR
     // left array is from s to mid index
-    // vector<int> left (arr.begin()+s, arr.begin()+mid +1);
-    // // right array is from mid +1 to e index
-    // vector<int> right (arr.begin()+mid+1,arr.begin()+e+1);
-
-    // int leftSize = left.size();
-    // int rightSize = right.size();
-
-
-
-    // Now merge 2 sorted arrays
-    int i = 0 , j = 0;
-    int index = s; // main array index
-
-    while(i < leftSize && j < rightSize){
-        if(left[i] <= right[j]){
-            arr[index] = left[i];
-            index++, i++;
-        }
-        else{
-            arr[index] = right[j];
-            index++, j++;
-        }
-    }
-
-    while(i < leftSize){
-        arr[index] = left[i];
-        index++, i++;
-    }
-
-    while(j < rightSize){
-        arr[index] = right[j];
-        index++,j++;
-    }
+    arr = {2,4,1,3,5};
+    cout<<countInversions(arr)<<endl;
 
     // free heap memory
-    delete [] left;
-    delete [] right;
+    // delete [] left;
+    // delete [] right;
 }
 
 
-void mergeSort(int *arr, int s , int e){
+void mergeSort(vector<int> &arr, int s , int e){
     // BC
     if(s>=e){
         return ;
@@ -108,7 +78,7 @@ void mergeSort(int *arr, int s , int e){
 
 int main ()
 {
-    int arr[6] =  {2,9,6,1,4,3};
+    vector<int> arr =  {2,9,6,1,4,3};
     int s = 0 , e = 5;
     mergeSort(arr,s,e);
 
