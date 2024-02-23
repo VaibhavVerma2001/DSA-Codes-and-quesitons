@@ -1,0 +1,6 @@
+i m writting in a file using open 
+line 2 python 
+line 3
+python
+ 
+python

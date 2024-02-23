@@ -10,6 +10,7 @@ using namespace std ;
 void merge(vector<int> &arr,vector<int> &temp, int s , int e , int mid, int &cnt){
 
     // Now merge 2 sorted arrays
+    // left array s-> mid , right array mid + 1 -> e
     int i = s , j = mid + 1;
     int index = s; // main array index
 

@@ -21,8 +21,8 @@ vector<bool> checkArithmeticSubarrays(vector<int> &arr, vector<int> &l, vector<i
         int s = l[i], e = r[i];
 
         // Make vector from index l[i] to r[i]
-        // sort it and check common diff for each i and i+1 th index element
-        vector<int> v(arr.begin() + s, arr.begin() + e + 1);
+        /
+        vector<int> v(arr.begin() + s, arr.begin() + e + 1);/ sort it and check common diff for each i and i+1 th index element
         sort(v.begin(), v.end());
 
         int d = v[1] - v[0], flag = 1;
