@@ -1,0 +1,2 @@
+
+    int size = q.size();
