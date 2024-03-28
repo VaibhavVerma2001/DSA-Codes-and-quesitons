@@ -8,7 +8,6 @@ using namespace std ;
 
 void solve(queue <int> &q){
     queue<int> second;
-    int size = q.size();
     int n = q.size()/2;
 
     // put first half in second queue and 1st half remain in q
@@ -39,16 +38,14 @@ void print(queue<int> q){
 
 int main (){
     queue<int> q;
-    q.push(10);
-    q.push(20);
-    q.push(30);
-    q.push(40);
-    q.push(50);
-    q.push(60);
-    q.push(70);
-    q.push(80);
-    q.push(90);
-    q.push(100);
+    q.push(1);
+    q.push(2);
+    q.push(3);
+    q.push(4);
+    q.push(5);
+    q.push(6);
+    q.push(7);
+    q.push(8);
 
     solve(q);
 
