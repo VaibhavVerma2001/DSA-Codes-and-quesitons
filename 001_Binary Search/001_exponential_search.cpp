@@ -16,7 +16,7 @@ using namespace std ;
 // Auxiliary Space : The above implementation of Binary Search is recursive and requires O(Log n) space. With iterative Binary Search, we need only O(1) space.
 // Applications of Exponential Search: 
 
-// 1 - Exponential Binary Search is particularly useful for unbounded searches, where size of array is infinite. Please refer Unbounded Binary Search for an example.
+// 1 - Exponential Binary Search is particularly useful for unbounded searches, where size of array is infinite.
 // 2 - It works better than Binary Search for bounded arrays, and also when the element to be searched is closer to the first element.
 
 

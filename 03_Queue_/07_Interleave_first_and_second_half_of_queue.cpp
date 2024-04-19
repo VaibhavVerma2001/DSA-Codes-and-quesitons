@@ -10,7 +10,7 @@ void solve(queue <int> &q){
     queue<int> second;
     int n = q.size()/2;
 
-    // put first half in second queue and 1st half remain in q
+    // put first half in second queue and remaining half remain in q
     for(int i = 0; i < n; i++){
         second.push(q.front());
         q.pop();
