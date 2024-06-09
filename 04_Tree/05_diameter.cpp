@@ -29,30 +29,72 @@ Output: 1
 // return max of them
 // tc = O(N*N), means brute force because calculating height of each node
 
-int height(TreeNode *root)
-{
-    if (root == NULL)
+// Condition - Take & of them
+    // 1 - left subtree balanced
+    // 2 - right subtree balanced
+    // 3 - L.H - R.H <= 1
+
+    // BC = when root is NULL return true
+    // TC = O(N*N), because calculating height for each node
+
+    // int height(TreeNode *root)
+    // {
+    //     if (root == NULL)
+    //     {
+    //         return 0;
+    //     }
+
+    //     int l = 1 + height(root->left);
+    //     int r = 1 + height(root->right);
+    //     return max(l, r);
+    // }
+
+    // bool isBalanced(TreeNode* root) {
+    //     if(root == NULL){
+    //         return true;
+    //     }
+
+    //     int leftheight = height(root->left);
+    //     int rightheight = height(root->right);
+
+    //     if(abs(leftheight - rightheight ) > 1){
+    //         return false;
+    //     }
+
+    //     bool leftAns = isBalanced(root->left);
+    //     bool rightAns = isBalanced(root->right);
+        
+    //     return (leftAns && rightAns);
+        
+    // }
+
+
+    // Method 2 - faster way TC = O(N)
+    // keep track while calculating height
+
+    int height(TreeNode *root, bool &ans)
     {
-        return 0;
+        if (root == NULL)
+        {
+            return 0;
+        }
+
+        int l = height(root->left,ans);
+        int r = height(root->right,ans);
+
+        // find if not balanced
+        if(abs(l-r) > 1){
+            ans = false;
+        }
+        return max(l, r) + 1;
     }
 
-    int l = 1 + height(root->left);
-    int r = 1 + height(root->right);
-    return max(l, r);
-}
+    bool isBalanced(TreeNode* root) {
+        if(root == NULL){
+            return true;
+        }
 
-int diameterOfBinaryTree(TreeNode *root)
-{
-
-    if (root == NULL)
-    {
-        return 0;
+        bool ans = true;
+        height(root,ans);
+        return ans;
     }
-
-    int option1 = diameterOfBinaryTree(root->left);
-    int option2 = diameterOfBinaryTree(root->right);
-    int option3 = height(root->left) + height(root->right);
-
-    int diameter = max(option1, max(option2, option3));
-    return diameter;
-}

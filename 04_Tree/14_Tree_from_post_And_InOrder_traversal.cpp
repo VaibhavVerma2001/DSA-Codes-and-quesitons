@@ -22,7 +22,7 @@ public:
 };
 
 // V.V. IMP -> take postorder index by reference so that it remains different for each call and not same for multiple calls
-// And first call for root->right then root->left
+// And first call for root->right then root->left bec LRN -> so its right after node
 // TC = SC = O(N)
 Node *solve(vector<int> postorder, vector<int> inorder, int &postOrderIndex, int inOrderStart, int inOrderEnd, int size, unordered_map<int, int> &m)
 {

@@ -11,6 +11,7 @@ void print(vector<int> &arr){
 
 
 // To sort vector of string in descending order - leetcode 1985
+//in leetcode we write static bec so that it become global(because it is written inside class) and we dont need to use like obj.comp, because comp is signature function
 static bool comp (string s1, string s2){
     // if the length is same then return true for bigger string
     if(s1.length()== s2.length()){
@@ -40,7 +41,7 @@ void printMap(unordered_map<int,int> &m){
 
 
 // return type of comparator is bool
-bool myComp(int a,int b){
+static bool myComp(int a,int b){
     
     // return a < b; // will sort in asc. order // means when a < b , then it is true -> no need to sort
     return a > b; // will sort in dec. order // means when a > b , then it is true -> no need to sort
