@@ -17,8 +17,8 @@ void solve(Node *root, int lvl,vector<int> &ans){
         ans.push_back(root->data);
     }
     
-    solve(root->left,lvl + 1,ans);
     solve(root->right,lvl + 1,ans);
+    solve(root->left,lvl + 1,ans);
 }
 
 vector<int> leftView(Node *root){
