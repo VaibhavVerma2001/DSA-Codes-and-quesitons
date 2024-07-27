@@ -102,3 +102,49 @@ TreeNode *createBinaryTree(vector<vector<int>> &arr)
 
     return root;
 }
+
+// Method 2 -> https://www.youtube.com/watch?v=Rt2prDOV2hU
+// Simply traverse array, keep track of TreeNode* whose node is created
+// if not created then create and add child to it's left or right
+// map of type <int,TreeNode*>
+TreeNode *createBinaryTree(vector<vector<int>> &arr)
+{
+    unordered_map<int, TreeNode *> m;
+    unordered_set<int> s;
+
+    for (auto &x : arr)
+    {
+        // create node if not found
+        if (m.find(x[0]) == m.end())
+        {
+            m[x[0]] = new TreeNode(x[0]);
+        }
+        if (m.find(x[1]) == m.end())
+        {
+            m[x[1]] = new TreeNode(x[1]);
+        }
+
+        if (x[2] == 1)
+        {
+            m[x[0]]->left = m[x[1]];
+        }
+        else
+        {
+            m[x[0]]->right = m[x[1]];
+        }
+
+        s.insert(x[1]); // store child nodes
+    }
+
+    TreeNode *root = NULL;
+    for (auto &x : arr)
+    {
+        if (s.find(x[0]) == s.end())
+        {
+            root = m[x[0]];
+            break;
+        }
+    }
+
+    return root;
+}
