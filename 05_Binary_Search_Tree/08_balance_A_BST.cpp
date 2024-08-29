@@ -28,6 +28,7 @@ The number of nodes in the tree is in the range [1, 104].
     // Convert the tree to a sorted array using an in-order traversal.
     // Construct a new balanced tree from the sorted array recursively.
     // TC = SC = O(N)
+    // https://leetcode.com/problems/balance-a-binary-search-tree/solutions/5670300/simple-and-easy-solution-with-explanation/
 
     void inorder(TreeNode* root, vector<int> &v){
         if(!root){
