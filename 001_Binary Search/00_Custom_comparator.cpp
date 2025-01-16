@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
 using namespace std ;
 
 
@@ -42,7 +43,6 @@ void printMap(unordered_map<int,int> &m){
 
 // return type of comparator is bool
 static bool myComp(int a,int b){
-    
     // return a < b; // will sort in asc. order // means when a < b , then it is true -> no need to sort
     return a > b; // will sort in dec. order // means when a > b , then it is true -> no need to sort
 }
@@ -73,21 +73,21 @@ int main (){
 
     // 2 - using comparator
 
-    // sort(arr.begin(),arr.end(),myComp);
-    // print(arr);
+    sort(arr.begin(),arr.end(),myComp);
+    print(arr);
 
 
 
     // B) Sorting vector of vector
-    vector<vector<int>> v = {{0,12}, {3,21}, {1,42}, {2,38}};
+    // vector<vector<int>> v = {{0,12}, {3,21}, {1,42}, {2,38}};
     
     // it will sort based on 0th index value
     // sort(v.begin(),v.end());
     // printvv(v);
 
     // to sort on the basis of 1st index
-    sort(v.begin(), v.end(), myCompFor1stIndex);
-    printvv(v);
+    // sort(v.begin(), v.end(), myCompFor1stIndex);
+    // printvv(v);
 
 
     return 0 ;

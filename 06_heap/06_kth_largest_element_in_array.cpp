@@ -26,12 +26,10 @@ Constraints:
 */
 
 // TC = O(n log n), SC = O(k)
-int findKthLargest(vector<int> &nums, int k)
-{
+int findKthLargest(vector<int> &nums, int k){
     // create min heap, so that largest element remain at bottom
-    priority_queue<int, vector<int>, greater<int>> pq;
-    for (auto &x : nums)
-    {
+    priority_queue<int, vector<int>, greater<int> > pq;
+    for (auto &x : nums) {
         pq.push(x);
         // remove extra element
         if (pq.size() > k)
@@ -39,8 +37,30 @@ int findKthLargest(vector<int> &nums, int k)
             pq.pop();
         }
     }
-
     return pq.top();
 }
+
+
+// Similary more optimized, no need to insert again and again bec it will take time in heapify
+// 1 - insert k elements
+// 2 - now in min heap for largest element, insert only when element > pq.top(), bec if element < pq.top() then we are still going to remove it bec size becomes > k, and on top that element will be there
+
+int findKthLargest(vector<int>& nums, int k) {
+    priority_queue<int, vector<int>, greater<int> > pq;
+    // insert k elements
+    for(int i = 0 ; i < k; i++){
+        pq.push(nums[i]);
+    }
+    // insert other elements only when element > pq.top()
+    for(int i = k; i < nums.size(); i++){
+        if(nums[i] > pq.top()){
+            pq.pop();
+            pq.push(nums[i]);
+        }
+    }
+    return pq.top();
+}
+
+
 
 // For kth smallest element, use max-heap
