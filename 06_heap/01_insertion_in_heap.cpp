@@ -70,6 +70,11 @@ class Heap {
         }
         cout << endl;
     }
+
+    ~Heap(){
+        cout << "Distructor called" << endl;
+        delete[] arr;
+    }
 };
 
 
