@@ -1,84 +1,95 @@
 #include<iostream>
 using namespace std;
 
+// deletion of root from max heap
 
-// Iteratively heapify
-void heapify(int *arr, int index){
-    while(index >= 0){
-        int parentIndex = (index-1)/2;
-        if(arr[parentIndex] < arr[index]){
-            swap(arr[parentIndex], arr[index]);
-        } else {
-            break;
+// Compare with largest child and replace if parent < child for max heap
+void heapify(int *arr, int n){
+    int index = 0;
+    while(index < n){
+        int largestIndex = index;
+        int left = index * 2 + 1;
+        int right = index * 2 + 2;
+
+        if(left < n && arr[left] > arr[largestIndex]){
+            largestIndex = left;
         }
-        index = parentIndex; // go to parent index
+        if(right < n && arr[right] > arr[largestIndex]){
+            largestIndex = right;
+        }
+
+        if(largestIndex == index){
+            break;
+        } else {
+            swap(arr[index], arr[largestIndex]);
+            index = largestIndex;
+        }
     }
 }
 
-void heapifyRec (int *arr, int index){
-    if(index <= 0){
+
+// Recursive heapify
+void heapifyRec(int *arr, int n, int index){
+    if (index >= n){
         return ;
     }
-    
-    int parentIndex = (index-1)/2;
-    if(arr[parentIndex] >= arr[index]){
-        return;
+
+    int largestIndex = index;
+    int left = index * 2 + 1;
+    int right = index * 2 + 2;
+
+    if(left < n && arr[left] > arr[largestIndex]){
+        largestIndex = left;
+    }
+    if(right < n && arr[right] > arr[largestIndex]){
+        largestIndex = right;
     }
 
-    swap(arr[parentIndex], arr[index]);
-    index = parentIndex; // go to parent index
-    heapifyRec(arr, index);
+    if(largestIndex == index){
+        return ;
+    } else {
+        swap(arr[index], arr[largestIndex]);
+        heapifyRec(arr,n,largestIndex);
+    }
 }
 
-class Heap {
-    int size;
-    int capacity;
-    int *arr;
+int deleteRoot(int *arr, int &n){
+    int top = arr[0];
+    arr[0] = arr[n-1];
+    n--;
 
-    public:
+    // heapify(arr,n);
+    int index = 0;
+    heapifyRec(arr, n , index);
+    return top;
+}
 
-    Heap(int capacity){
-        this -> size = -1;
-        this -> capacity = capacity;
-        this -> arr = new int[capacity];
-    }
 
-    ~Heap(){
-        cout << "Distructor called" << endl;
-        delete[] arr;
-    }
 
-    void insert(int num){
-        if((size + 1) >= capacity){
-            cout << "Heap overflow" << endl;
-            return ;
-        }
-        cout << "inserting at pos : " << num << " : " << size << endl; 
-        arr[size++] = num;
-        
+//TC FOR HEAPIFY = O(log n)
 
-        int index = size;
-        // heapify(arr, index);
-        heapifyRec(arr, index);
-    }
 
-    void displayHeap(){
-        cout << "Heap is : ";
-        for(int i = 0 ; i < size; i++){
-            cout << arr[i] << " ";
-        }
-        cout << endl;
-    }
-};
+void printArray(int arr[], int n){
+    for (int i = 0; i < n; ++i)
+        cout << arr[i] << " ";
+    cout << "\n";
+}
 
-int main(){
-    Heap h(10);
-    h.insert(10);
-    h.insert(5);
-    h.insert(3);
-    h.insert(2);
-    h.insert(4);
-    h.insert(15);
+int main()   {
+    // Array representation of Max-Heap
+    //     10
+    //    /   \
+    //   5    3
+    //  / \   /
+    // 2   4  1
+    int arr[] = { 10, 5, 3, 2, 4, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+ 
+    cout << deleteRoot(arr, n) << endl;
+ 
+    printArray(arr, n);
 
-    h.displayHeap();
+    cout << deleteRoot(arr, n) << endl;
+ 
+    printArray(arr, n);
 }

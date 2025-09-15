@@ -83,7 +83,7 @@ Constraints:
         }
         
         if(root -> key < key ){
-            // if current node > x then store that and go to its left
+            // if current node > x then store that and go to its right
             pre = root;
             findPre(root -> right, pre, key);
         }
